@@ -13,6 +13,23 @@ class App extends Component {
     this.state = {
       name: 'Pato Donald',
       counter: 0,
+      posts: [
+      {
+        id: 1,
+        title: 'title 1',
+        body: 'body 1'
+      },
+      {
+        id: 2,
+        title: 'title 2',
+        body: 'body 2'
+      },
+      {
+        id: 3,
+        title: 'title 3',
+        body: 'body 3'
+      },
+    ]
     }
   }
 
@@ -39,7 +56,7 @@ class App extends Component {
   }
 
   render() {
-    const { name, counter } = this.state;
+    const { name, counter, posts } = this.state;
 
     return (
       <div className="App">
@@ -48,6 +65,14 @@ class App extends Component {
           <p onClick={this.handlePClick}>
             {name} {counter}
           </p>
+          <ul style={{listStyleType: 'none'}}>
+            {posts.map(post => (
+              <li key={post.id}>
+                <h1>{post.title}</h1>
+                <p>{post.body}</p>
+              </li>
+            ))}
+          </ul>
           <a
             onClick={this.handleAClick}
             className="App-link"
